@@ -7,22 +7,22 @@ import java.time.LocalDate;
 
 public class Licence {
 
-    public Personne possesseur;
+    public Plongeur possesseur;
 
     public String numero;
 
-    public LocalDate delivrance;
+    public static LocalDate delivrance;
 
     public Club club;
 
-    public Licence(Personne possesseur, String numero, LocalDate delivrance, Club club) {
+    public Licence(Plongeur possesseur, String numero, LocalDate delivrance, Club club) {
         this.possesseur = possesseur;
         this.numero = numero;
         this.delivrance = delivrance;
         this.club = club;
     }
 
-    public Personne getPossesseur() {
+    public Plongeur getPossesseur() {
         return possesseur;
     }
 
@@ -44,9 +44,12 @@ public class Licence {
      * @param d la date à tester
      * @return vrai si valide à la date d
      **/
-    public boolean estValide(LocalDate d) {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+    public static boolean estValide(LocalDate d) {
+        boolean valide = true;
+        LocalDate fin = delivrance.plusYears(1);
+        if (d.isAfter(fin)){
+            return false;
+        }
+        return valide;
     }
-
 }

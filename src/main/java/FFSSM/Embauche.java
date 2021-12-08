@@ -14,6 +14,9 @@ public class Embauche {
 
     public Embauche(LocalDate debut, Moniteur employe, Club employeur) {
         this.debut = debut;
+        if (null == employe || null == employeur){
+            throw new NullPointerException();
+        }
         this.employe = employe;
         this.employeur = employeur;
     }
@@ -23,8 +26,7 @@ public class Embauche {
      * @param dateFin la date à laquelle cette embauche est terminée
      */
     public void terminer(LocalDate dateFin) {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");	    
+       this.setFin(dateFin);
     }
     
     /**
